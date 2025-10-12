@@ -2,16 +2,143 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Мой сайт</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UltimaxClicker — быстрый и стабильный автокликер для Windows</title>
+  <meta name="description" content="UltimaxClicker — лёгкий автокликер для Windows с профилями, горячими клавишами, точным CPS и наглядной телеметрией." />
+  <meta name="theme-color" content="#0d0d0d" />
+  <link rel="icon" href="favicon.ico" />
   <style>
-    body{font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;max-width:760px;margin:40px auto;padding:0 16px}
-    h1{font-size:28px;margin:0 0 8px}
-    .muted{opacity:.7}
+    :root{
+      --bg:#0d0d0d; --text:#ffffff; --muted:#9aa0a6; --card:#121212; --card-2:#161616; --stroke:#1f1f1f;
+      --accent:#cc0000; --accent-2:#ff2a2a; --ok:#00c853; --warn:#ffab00;
+      --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif}
+    a{color:var(--accent-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .hero{position:relative;overflow:hidden;background:radial-gradient(1200px 600px at 70% -10%, rgba(204,0,0,.15), transparent 60%), linear-gradient(180deg, #0d0d0d 0%, #0b0b0b 100%);} 
+    .hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:72px 0}
+    .badge{display:inline-flex;gap:8px;align-items:center;color:#e6e6e6;background:rgba(255,255,255,.06);border:1px solid var(--stroke);padding:6px 10px;border-radius:999px}
+    .title{margin:10px 0 8px;font-size:44px;line-height:1.15;letter-spacing:.2px}
+    .subtitle{margin:0;color:var(--muted)}
+    .kpi{display:flex;gap:18px;margin:26px 0;flex-wrap:wrap}
+    .kpi .chip{border:1px solid var(--stroke);background:var(--card);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow)}
+    .cta{margin:28px 0 0;display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid var(--stroke);background:var(--card-2);color:var(--text);cursor:pointer;box-shadow:var(--shadow);transition:transform .06s ease, background .2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:linear-gradient(180deg, var(--accent), #a30000);border-color:#7a0000}
+    .btn.ghost{background:transparent}
+    .screen{border-radius:16px;border:1px solid var(--stroke);background:linear-gradient(180deg,#121212,#0f0f0f);box-shadow:var(--shadow);padding:20px}
+    .grid{display:grid;gap:20px}
+    .section{padding:64px 0;border-top:1px solid var(--stroke)}
+    h2{margin:0 0 12px;font-size:28px}
+    .muted{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+    .card{border:1px solid var(--stroke);background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0b0b0b;border:1px solid var(--stroke);padding:10px;border-radius:10px;white-space:pre-wrap}
+    .two-col{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}
+    .list{margin:0;padding-left:18px}
+    .pill{display:inline-block;border:1px solid var(--stroke);border-radius:999px;padding:2px 8px;background:rgba(255,255,255,.04);font-size:12px;color:#c9c9c9}
+    .faq{display:grid;gap:10px}
+    details{border:1px solid var(--stroke);border-radius:12px;padding:14px;background:var(--card)}
+    summary{cursor:pointer;font-weight:600}
+    footer{padding:36px 0;color:#bdbdbd;border-top:1px solid var(--stroke)}
+    .footgrid{display:grid;gap:14px;grid-template-columns:1fr auto}
+    @media (max-width: 980px){.hero-inner{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+    @media (max-width: 620px){.cards{grid-template-columns:1fr}.title{font-size:36px}}
   </style>
 </head>
 <body>
-  <h1>Привет!</h1>
-  <p class="muted">Это мой сайт на GitHub Pages.</p>
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="badge"><span>🖱️</span><span>UltimaxClicker</span><span class="pill">Windows</span></div>
+      <h1 class="title">Автокликер с профилями, горячими клавишами и точным CPS</h1>
+      <p class="subtitle">Лёгкий, быстрый и наглядный инструмент. Включай по <strong>F4</strong>, работай в режиме <em>toggle</em> или <em>hold</em>, настраивай до 1000 CPS, сохраняй пресеты и следи за стабильностью в реальном времени.</p>
+      <div class="kpi">
+        <div class="chip">⚡ До 1000 CPS</div>
+        <div class="chip">🎛️ Профили</div>
+        <div class="chip">⌨️ Клавиша F4 по умолчанию</div>
+        <div class="chip">🔒 Без установки драйверов</div>
+      </div>
+      <div class="cta">
+        <a class="btn primary" id="download" href="https://github.com/Nureeks/UltimaxClicker/releases/latest/download/UltimaxClicker.exe">
+          ⬇️ Скачать EXE
+        </a>
+        <a class="btn" href="#features">Особенности</a>
+        <a class="btn ghost" id="sources" href="https://github.com/Nureeks/UltimaxClicker/releases/tag/v1.3" target="_blank" rel="noopener">Исходники на GitHub</a>
+      </div>
+    </div>
+    <div class="screen">
+      <div class="grid" aria-hidden="true">
+        <div class="card">
+          <strong>Цель (CPS):</strong>
+          <div class="code">20.0 CPS → 1000.0 CPS\nРежим: toggle / hold\nКлавиша активации: F4</div>
+        </div>
+        <div class="card"><strong>Стабильность</strong><div class="code">98.7% (зелёная зона)</div></div>
+        <div class="card"><strong>Профили</strong><div class="code">default, raid, building, test</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- содержимое остаётся прежним -->
+
+  <section class="section">
+    <div class="container two-col">
+      <div>
+        <h2>Журнал изменений</h2>
+        <ul class="list">
+          <li><strong>v1.3</strong>: оптимизация потоков, улучшенный счётчик CPS/стабильности, менеджер профилей.</li>
+          <li><strong>v1.2</strong>: анимации UI, улучшена работа горячих клавиш.</li>
+          <li><strong>v1.0</strong>: базовый функционал автокликера.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Обратная связь</h3>
+        <p>Нашли баг или есть идея? Откройте <a href="https://github.com/Nureeks/UltimaxClicker/issues" target="_blank" rel="noopener">Issue на GitHub</a> или форкните проект.</p>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn" href="https://github.com/Nureeks/UltimaxClicker" target="_blank" rel="noopener">⭐ Поставить звезду</a>
+          <a class="btn ghost" href="#top">Наверх ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footgrid">
+    <div>
+      <div class="muted">© <span id="year"></span> UltimaxClicker. Сделано с любовью к аккуратным кликам.</div>
+      <div class="muted">Сайт и приложение распространяются «как есть». Соблюдайте правила ПО/игр.</div>
+    </div>
+    <div>
+      <a class="pill" href="https://github.com/Nureeks/UltimaxClicker" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        const href = a.getAttribute('href');
+        if (href === '#' || href === '#top') return;
+        const el = document.querySelector(href);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth'});
+      });
+    });
+  });
+</script>
 </body>
 </html>
